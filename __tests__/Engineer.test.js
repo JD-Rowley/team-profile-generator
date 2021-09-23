@@ -30,7 +30,7 @@ test("gets engineer's id", () => {
 test("gets engineer's email", () => {
     const engineer = new Engineer('Phil');
 
-    expect(engineer.getEmail()).toBe('email: ' + engineer.email);
+    expect(engineer.getEmail()).toBe('Email: ' + engineer.email);
 });
 
 test("gets engineer's role", () => {
