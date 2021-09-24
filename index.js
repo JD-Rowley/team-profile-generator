@@ -1,10 +1,9 @@
+const fs = require('fs');
 const inquirer = require('inquirer');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
-
-const engineerArr = [];
-const internArr = [];
+const generatePage = require('./src/page-template');
 
 // initialize app with inquirer
 function initializeApp() {
@@ -37,8 +36,12 @@ function initializeApp() {
         })
 };
 
-function addEngineer() {
-    inquirer
+function addEngineer(engineerData) {
+    // if there is no answers array, create one
+    if (!engineerData) {
+        engineerData = [];
+    };
+    return inquirer
         .prompt([
             {
                 type: 'text',
@@ -61,9 +64,17 @@ function addEngineer() {
                 message: "What is the engineer's GitHub username?"
             }
         ])
+        .then(answers => {
+            engineerData.push(answers);
+            nextEmployee();
+        })
 };
 
-function addIntern() {
+function addIntern(internData) {
+    // if there is no array for interns, create one
+    if (!internData) {
+        internData = [];
+    };
     inquirer
         .prompt([
             {
@@ -87,6 +98,10 @@ function addIntern() {
                 message: "What is the intern's GitHub username?"
             }
         ])
+        .then(answers => {
+            internData.push(answers);
+            nextEmployee();
+        })
 };
 
 function nextEmployee() {
@@ -109,6 +124,12 @@ function nextEmployee() {
             }
         })
 };
+
+// fs.writeFile('./dist/index.html', generatePage(), err => {
+//     if (err) throw err;
+
+//     console.log('Page created!');
+// });
 
 initializeApp();
 
