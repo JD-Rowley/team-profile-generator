@@ -26,20 +26,11 @@ function initializeApp() {
                 type: 'text',
                 name: 'officeNumber',
                 message: "What is the manager's office number?"
-            },
-            {
-                type: 'list',
-                name: 'chooseEmployee',
-                message: 'Which employee would you like to add?',
-                choices: ['Engineer', 'Intern']
             }
         ])
-        .then(({ chooseEmployee }) => {
-            if (chooseEmployee === 'Engineer') {
-                addEngineer();
-            } else {
-                addIntern();
-            }
+        .then((answers) => {
+            console.log(answers);
+            nextEmployee();
         })
 };
 
@@ -99,13 +90,22 @@ function nextEmployee() {
     inquirer
         .prompt(
             {
-                type: 'confirm',
-                name: 'employeeConfirm',
-                message: 'Would you like to add another employee?',
-                default: false
+                type: 'list',
+                name: 'chooseEmployee',
+                message: 'Would you like to add an engineer or an intern?',
+                choices: ['Engineer', 'Intern', "I don't want to add another employee"]
             }
         )
-}
+        .then(({ chooseEmployee }) => {
+            if (chooseEmployee === 'Engineer') {
+                addEngineer();
+            } else if (chooseEmployee === 'Intern') {
+                addIntern();
+            } else {
+                return;
+            }
+        })
+};
 
 initializeApp();
 

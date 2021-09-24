@@ -29,5 +29,5 @@ test("gets employee's email", () => {
 test("gets employee's role", () => {
     const employee = new Employee('Dave');
 
-    expect(employee.getRole()).toBe('Employee');
+    expect(employee.getRole()).toBe('');
 });
