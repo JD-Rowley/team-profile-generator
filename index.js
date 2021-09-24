@@ -5,6 +5,11 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const generatePage = require('./src/page-template');
 
+// arrays for employees
+const managerArr = [];
+const engineerArr = [];
+const internArr =[];
+
 // initialize app with inquirer
 function initializeApp() {
     inquirer
@@ -30,17 +35,14 @@ function initializeApp() {
                 message: "What is the manager's office number?"
             }
         ])
-        .then((answers) => {
-            console.log(answers);
+        .then(answers => {
+            const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.officeNumber);
+            managerArr.push(manager);
             nextEmployee();
         })
 };
 
-function addEngineer(engineerData) {
-    // if there is no answers array, create one
-    if (!engineerData) {
-        engineerData = [];
-    };
+function addEngineer() {
     return inquirer
         .prompt([
             {
@@ -65,17 +67,14 @@ function addEngineer(engineerData) {
             }
         ])
         .then(answers => {
-            engineerData.push(answers);
+            const engineers = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
+            engineerArr.push(engineers);
             nextEmployee();
         })
 };
 
-function addIntern(internData) {
-    // if there is no array for interns, create one
-    if (!internData) {
-        internData = [];
-    };
-    inquirer
+function addIntern() {
+    return inquirer
         .prompt([
             {
                 type: 'text',
@@ -94,18 +93,19 @@ function addIntern(internData) {
             },
             {
                 type: 'text',
-                name: 'internGithub',
-                message: "What is the intern's GitHub username?"
+                name: 'internSchool',
+                message: "What school did this intern attend?"
             }
         ])
         .then(answers => {
-            internData.push(answers);
+            const interns = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
+            internArr.push(interns);
             nextEmployee();
         })
 };
 
 function nextEmployee() {
-    inquirer
+    return inquirer
         .prompt(
             {
                 type: 'list',

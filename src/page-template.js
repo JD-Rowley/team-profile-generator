@@ -1,4 +1,66 @@
-const generatePage = () => {
+const generateManagerCard = templateData => {
+    return `
+    <div class="card card-entirety">
+        <div class="card-header text-white bg-primary">
+            <h2 class="card-title">${templateData.managerName}</h2>
+            <h3><i class="fas fa-mug-hot"></i> Manager</h3>          
+        </div>
+        <div class="card-body bg-light pt-5 pb-5">
+            <div class="card">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">ID: ${templateData.managerId}</li>
+                    <li class="list-group-item">Email: <a href=mailto:${templateData.managerEmail}>${templateData.managerEmail}</a></li>
+                    <li class="list-group-item">Office Number: ${templateData.officeNumber}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    `;
+};
+
+const generateEngineerCard = templateData => {
+    return `
+    <div class="card card-entirety">
+        <div class="card-header text-white bg-primary">
+            <h2 class="card-title">${templateData.engineerName}</h2>
+            <h3><i class="fas fa-glasses"></i> Engineer</h3>          
+        </div>
+        <div class="card-body bg-light pt-5 pb-5">
+            <div class="card">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">ID: ${templateData.engineerId}</li>
+                    <li class="list-group-item">Email: <a href=mailto:${templateData.engineerEmail}>${templateData.engineerEmail}</a></li>
+                    <li class="list-group-item">GitHub: ${templateData.engineerGithub}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    `;
+};
+
+const generateInternCard = templateData => {
+    return `
+    <div class="card card-entirety">
+        <div class="card-header text-white bg-primary">
+            <h2 class="card-title">${templateData.internName}</h2>
+            <h3><i class="fas fa-user-graduate"></i> Intern</h3>            
+        </div>
+        <div class="card-body bg-light pt-5 pb-5">
+            <div class="card">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">ID: ${templateData.internId}</li>
+                    <li class="list-group-item">Email: <a href=mailto:${templateData.internEmail}>${templateData.internEmail}</a></li>
+                    <li class="list-group-item">School: ${templateData.internSchool}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    `;
+}
+
+module.exports = templateData => {
+    console.log(templateData);
+
     return `
 <!DOCTYPE html>
 <html lang="en">
@@ -16,70 +78,11 @@ const generatePage = () => {
         <h1>My Team</h1>
     </header>
     <div class="container d-flex justify-content-around mt-5">
-        <div class="card card-entirety">
-            <div class="card-header text-white bg-primary">
-                <h2 class="card-title">Name</h2>
-                <h3><i class="fas fa-mug-hot"></i> Manager</h3>          
-            </div>
-            <div class="card-body bg-light pt-5 pb-5">
-                <div class="card">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">ID:</li>
-                        <li class="list-group-item">Email:</li>
-                        <li class="list-group-item">GitHub:</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="card card-entirety">
-            <div class="card-header text-white bg-primary">
-                <h2 class="card-title">Name</h2>
-                <h3><i class="fas fa-glasses"></i> Engineer</h3>          
-            </div>
-            <div class="card-body bg-light pt-5 pb-5">
-                <div class="card">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">ID:</li>
-                        <li class="list-group-item">Email:</li>
-                        <li class="list-group-item">GitHub:</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="card card-entirety">
-            <div class="card-header text-white bg-primary">
-                <h2 class="card-title">Name</h2>
-                <h3><i class="fas fa-user-graduate"></i> Intern</h3>            
-            </div>
-            <div class="card-body bg-light pt-5 pb-5">
-                <div class="card">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">ID:</li>
-                        <li class="list-group-item">Email:</li>
-                        <li class="list-group-item">GitHub:</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="card card-entirety">
-            <div class="card-header text-white bg-primary">
-                <h2 class="card-title">Name</h2>
-                <h3>Role</h3>            
-            </div>
-            <div class="card-body bg-light pt-5 pb-5">
-                <div class="card">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">ID:</li>
-                        <li class="list-group-item">Email:</li>
-                        <li class="list-group-item">GitHub:</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+    ${generateManagerCard(templateData.answers)}
+    ${generateEngineerCard(templateData.engineerData)}
+    ${generateInternCard(templateData.internData)}
     </div>
 </body>
 </html>
     `;
 };
-
-module.exports = generatePage;
