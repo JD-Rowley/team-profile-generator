@@ -1,65 +1,73 @@
-const generateManagerCard = templateData => {
+const Employee = require("../lib/Employee");
+
+const generateManagerCard = managerArr => {
+    return managerArr.map(({ name, id, email, officeNumber }) => {
     return `
-    <div class="card card-entirety">
+    <div class="col-3 card card-entirety m-3">
         <div class="card-header text-white bg-primary">
-            <h2 class="card-title">${templateData.managerName}</h2>
+            <h2 class="card-title">${name}</h2>
             <h3><i class="fas fa-mug-hot"></i> Manager</h3>          
         </div>
         <div class="card-body bg-light pt-5 pb-5">
             <div class="card">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">ID: ${templateData.managerId}</li>
-                    <li class="list-group-item">Email: <a href=mailto:${templateData.managerEmail}>${templateData.managerEmail}</a></li>
-                    <li class="list-group-item">Office Number: ${templateData.officeNumber}</li>
+                    <li class="list-group-item">ID: ${id}</li>
+                    <li class="list-group-item">Email: <a href=mailto:${email}>${email}</a></li>
+                    <li class="list-group-item">Office Number: ${officeNumber}</li>
                 </ul>
             </div>
         </div>
     </div>
     `;
+    }).join('');
 };
 
-const generateEngineerCard = templateData => {
+const generateEngineerCard = engineerArr => {
+    return engineerArr.map(({ name, id, email, github }) => {
     return `
-    <div class="card card-entirety">
+    <div class="col-3 card card-entirety m-3">
         <div class="card-header text-white bg-primary">
-            <h2 class="card-title">${templateData.engineerName}</h2>
+            <h2 class="card-title">${name}</h2>
             <h3><i class="fas fa-glasses"></i> Engineer</h3>          
         </div>
         <div class="card-body bg-light pt-5 pb-5">
             <div class="card">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">ID: ${templateData.engineerId}</li>
-                    <li class="list-group-item">Email: <a href=mailto:${templateData.engineerEmail}>${templateData.engineerEmail}</a></li>
-                    <li class="list-group-item">GitHub: ${templateData.engineerGithub}</li>
+                    <li class="list-group-item">ID: ${id}</li>
+                    <li class="list-group-item">Email: <a href=mailto:${email}>${email}</a></li>
+                    <li class="list-group-item">GitHub: <a href="https://github.com/${github}">${github}</a></li>
                 </ul>
             </div>
         </div>
     </div>
     `;
+    }).join('');
 };
 
-const generateInternCard = templateData => {
+const generateInternCard = internArr => {
+    return internArr.map(({ name, id, email, school }) => {
     return `
-    <div class="card card-entirety">
+    <div class="col-3 card card-entirety m-3">
         <div class="card-header text-white bg-primary">
-            <h2 class="card-title">${templateData.internName}</h2>
+            <h2 class="card-title">${name}</h2>
             <h3><i class="fas fa-user-graduate"></i> Intern</h3>            
         </div>
         <div class="card-body bg-light pt-5 pb-5">
             <div class="card">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">ID: ${templateData.internId}</li>
-                    <li class="list-group-item">Email: <a href=mailto:${templateData.internEmail}>${templateData.internEmail}</a></li>
-                    <li class="list-group-item">School: ${templateData.internSchool}</li>
+                    <li class="list-group-item">ID: ${id}</li>
+                    <li class="list-group-item">Email: <a href=mailto:${email}>${email}</a></li>
+                    <li class="list-group-item">School: ${school}</li>
                 </ul>
             </div>
         </div>
     </div>
     `;
-}
+    }).join('');
+};
 
 module.exports = templateData => {
-    console.log(templateData);
+    const { managerArr, engineerArr, internArr } = templateData;
 
     return `
 <!DOCTYPE html>
@@ -78,9 +86,11 @@ module.exports = templateData => {
         <h1>My Team</h1>
     </header>
     <div class="container d-flex justify-content-around mt-5">
-    ${generateManagerCard(templateData.answers)}
-    ${generateEngineerCard(templateData.engineerData)}
-    ${generateInternCard(templateData.internData)}
+        <div clas="row"
+        ${generateManagerCard(managerArr)}
+        ${generateEngineerCard(engineerArr)}
+        ${generateInternCard(internArr)}
+        </div>
     </div>
 </body>
 </html>

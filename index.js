@@ -1,9 +1,11 @@
+const { writeFile, copyFile } = require('./utils/generatePage.js');
 const fs = require('fs');
 const inquirer = require('inquirer');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const generatePage = require('./src/page-template');
+const Employee = require('./lib/Employee.js');
 
 // arrays for employees
 const managerArr = [];
@@ -38,6 +40,11 @@ function initializeApp() {
         .then(answers => {
             const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.officeNumber);
             managerArr.push(manager);
+            // fs.writeFile('./dist/index.html', generatePage({ managerArr }), err => {
+            //     if (err) throw err;
+            
+            //     console.log('Page created!');
+            // });
             nextEmployee();
         })
 };
@@ -120,6 +127,14 @@ function nextEmployee() {
             } else if (chooseEmployee === 'Intern') {
                 addIntern();
             } else {
+                const pageHTML = generatePage({ managerArr, engineerArr, internArr });
+
+                fs.writeFile('./dist/index.html', pageHTML, err => {
+                    if (err) throw err;
+                
+                    console.log('Page created!');
+                });
+
                 return;
             }
         })
