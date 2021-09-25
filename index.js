@@ -146,6 +146,6 @@ function nextEmployee() {
 //     console.log('Page created!');
 // });
 
-initializeApp();
+initializeApp()
 
 module.exports = initializeApp;
