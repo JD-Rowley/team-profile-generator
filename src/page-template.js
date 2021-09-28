@@ -3,7 +3,7 @@ const Employee = require("../lib/Employee");
 const generateManagerCard = managerArr => {
     return managerArr.map(({ name, id, email, officeNumber }) => {
     return `
-    <div class="col-3 card card-entirety m-3">
+    <div class="col-3 card card-entirety m-5">
         <div class="card-header text-white bg-primary">
             <h2 class="card-title">${name}</h2>
             <h3><i class="fas fa-mug-hot"></i> Manager</h3>          
@@ -11,9 +11,9 @@ const generateManagerCard = managerArr => {
         <div class="card-body bg-light pt-5 pb-5">
             <div class="card">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">ID: ${id}</li>
-                    <li class="list-group-item">Email: <a href=mailto:${email}>${email}</a></li>
-                    <li class="list-group-item">Office Number: ${officeNumber}</li>
+                    <li class="list-group-item"><b>ID:</b> ${id}</li>
+                    <li class="list-group-item"><b>Email:</b> <a href=mailto:${email}>${email}</a></li>
+                    <li class="list-group-item"><b>Office Number:</b> ${officeNumber}</li>
                 </ul>
             </div>
         </div>
@@ -25,7 +25,7 @@ const generateManagerCard = managerArr => {
 const generateEngineerCard = engineerArr => {
     return engineerArr.map(({ name, id, email, github }) => {
     return `
-    <div class="col-3 card card-entirety m-3">
+    <div class="col-3 card card-entirety m-5">
         <div class="card-header text-white bg-primary">
             <h2 class="card-title">${name}</h2>
             <h3><i class="fas fa-glasses"></i> Engineer</h3>          
@@ -33,9 +33,9 @@ const generateEngineerCard = engineerArr => {
         <div class="card-body bg-light pt-5 pb-5">
             <div class="card">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">ID: ${id}</li>
-                    <li class="list-group-item">Email: <a href=mailto:${email}>${email}</a></li>
-                    <li class="list-group-item">GitHub: <a href="https://github.com/${github}">${github}</a></li>
+                    <li class="list-group-item"><b>ID:</b> ${id}</li>
+                    <li class="list-group-item"><b>Email:</b> <a href=mailto:${email}>${email}</a></li>
+                    <li class="list-group-item"><b>GitHub:</b> <a href="https://github.com/${github}">${github}</a></li>
                 </ul>
             </div>
         </div>
@@ -47,7 +47,7 @@ const generateEngineerCard = engineerArr => {
 const generateInternCard = internArr => {
     return internArr.map(({ name, id, email, school }) => {
     return `
-    <div class="col-3 card card-entirety m-3">
+    <div class="col-3 card card-entirety m-5">
         <div class="card-header text-white bg-primary">
             <h2 class="card-title">${name}</h2>
             <h3><i class="fas fa-user-graduate"></i> Intern</h3>            
@@ -55,9 +55,9 @@ const generateInternCard = internArr => {
         <div class="card-body bg-light pt-5 pb-5">
             <div class="card">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">ID: ${id}</li>
-                    <li class="list-group-item">Email: <a href=mailto:${email}>${email}</a></li>
-                    <li class="list-group-item">School: ${school}</li>
+                    <li class="list-group-item"><b>ID:</b> ${id}</li>
+                    <li class="list-group-item"><b>Email:</b> <a href=mailto:${email}>${email}</a></li>
+                    <li class="list-group-item"><b>School:</b> ${school}</li>
                 </ul>
             </div>
         </div>
@@ -86,7 +86,7 @@ module.exports = templateData => {
         <h1>My Team</h1>
     </header>
     <div class="container d-flex justify-content-around mt-5">
-        <div clas="row"
+        <div class="row">
         ${generateManagerCard(managerArr)}
         ${generateEngineerCard(engineerArr)}
         ${generateInternCard(internArr)}
