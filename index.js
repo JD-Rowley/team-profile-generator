@@ -19,22 +19,54 @@ function initializeApp() {
             {
                 type: 'text',
                 name: 'managerName',
-                message: "What is the manager's name?"
+                message: "What is the manager's name?",
+                validate: nameInput => {
+                    if (nameInput) {
+                        return true;
+                    } else {
+                        console.log("Please enter the manager's name!");
+                        return false;
+                    }
+                }
             },
             {
                 type: 'text',
                 name: 'managerId',
-                message: "What is the manager's ID number?"
+                message: "What is the manager's ID number?",
+                validate: idInput => {
+                    if (idInput) {
+                        return true;
+                    } else {
+                        console.log("Please enter the manager's id!");
+                        return false;
+                    }
+                }
             },
             {
                 type: 'text',
                 name: 'managerEmail',
-                message: "What is the manager's e-mail address?"
+                message: "What is the manager's e-mail address?",
+                validate: emailInput => {
+                    if (emailInput) {
+                        return true;
+                    } else {
+                        console.log("Please enter the manager's e-mail address!");
+                        return false;
+                    }
+                }
             },
             {
                 type: 'text',
                 name: 'officeNumber',
-                message: "What is the manager's office number?"
+                message: "What is the manager's office number?",
+                validate: officeNumberInput => {
+                    if (officeNumberInput) {
+                        return true;
+                    } else {
+                        console.log("Please enter the manager's office number!");
+                        return false;
+                    }
+                }
             }
         ])
         .then(answers => {
@@ -50,22 +82,54 @@ function addEngineer() {
             {
                 type: 'text',
                 name: 'engineerName',
-                message: "What is the engineer's name?"
+                message: "What is the engineer's name?",
+                validate: nameInput => {
+                    if (nameInput) {
+                        return true;
+                    } else {
+                        console.log("Please enter the engineer's name!");
+                        return false;
+                    }
+                }
             },
             {
                 type: 'text',
                 name: 'engineerId',
-                message: "What is the engineer's ID number?"
+                message: "What is the engineer's ID number?",
+                validate: idInput => {
+                    if (idInput) {
+                        return true;
+                    } else {
+                        console.log("Please enter the engineer's id!");
+                        return false;
+                    }
+                }
             },
             {
                 type: 'text',
                 name: 'engineerEmail',
-                message: "What is the engineer's e-mail address?"
+                message: "What is the engineer's e-mail address?",
+                validate: emailInput => {
+                    if (emailInput) {
+                        return true;
+                    } else {
+                        console.log("Please enter the engineer's e-mail address!");
+                        return false;
+                    }
+                }
             },
             {
                 type: 'text',
                 name: 'engineerGithub',
-                message: "What is the engineer's GitHub username?"
+                message: "What is the engineer's GitHub username?",
+                validate: githubInput => {
+                    if (githubInput) {
+                        return true;
+                    } else {
+                        console.log("Please enter the engineer's GitHub username!");
+                        return false;
+                    }
+                }
             }
         ])
         .then(answers => {
@@ -81,22 +145,54 @@ function addIntern() {
             {
                 type: 'text',
                 name: 'internName',
-                message: "What is the intern's name?"
+                message: "What is the intern's name?",
+                validate: nameInput => {
+                    if (nameInput) {
+                        return true;
+                    } else {
+                        console.log("Please enter the intern's name!");
+                        return false;
+                    }
+                }
             },
             {
                 type: 'text',
                 name: 'internId',
-                message: "What is the intern's ID number?"
+                message: "What is the intern's ID number?",
+                validate: idInput => {
+                    if (idInput) {
+                        return true;
+                    } else {
+                        console.log("Please enter the intern's id!");
+                        return false;
+                    }
+                }
             },
             {
                 type: 'text',
                 name: 'internEmail',
-                message: "What is the intern's e-mail address?"
+                message: "What is the intern's e-mail address?",
+                validate: emailInput => {
+                    if (emailInput) {
+                        return true;
+                    } else {
+                        console.log("Please enter the intern's e-mail address!");
+                        return false;
+                    }
+                }
             },
             {
                 type: 'text',
                 name: 'internSchool',
-                message: "What school did this intern attend?"
+                message: "What school did this intern attend?",
+                validate: schoolInput => {
+                    if (schoolInput) {
+                        return true;
+                    } else {
+                        console.log("Please enter the intern's school!");
+                        return false;
+                    }
+                }
             }
         ])
         .then(answers => {
