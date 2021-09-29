@@ -40,11 +40,6 @@ function initializeApp() {
         .then(answers => {
             const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.officeNumber);
             managerArr.push(manager);
-            // fs.writeFile('./dist/index.html', generatePage({ managerArr }), err => {
-            //     if (err) throw err;
-            
-            //     console.log('Page created!');
-            // });
             nextEmployee();
         })
 };
@@ -111,6 +106,35 @@ function addIntern() {
         })
 };
 
+function generatePageHTML() {
+    const pageHTML = generatePage({ managerArr, engineerArr, internArr });
+
+    if (!fs.existsSync('./dist')) {
+        console.log('No directory... Creating...')
+
+        fs.mkdir('./dist', err => {
+            if (err) return err;
+
+            fs.writeFile('./dist/index.html', pageHTML, err => {
+                if (err) return err;
+
+                console.log('Page created!');
+            })
+        })
+    } else {
+        console.log('Directory detected...')
+
+        fs.writeFile('./dist/index.html', pageHTML, err => {
+            if (err) throw err;
+        
+            console.log('Page created!');
+        });
+
+        return;
+    }
+
+}
+
 function nextEmployee() {
     return inquirer
         .prompt(
@@ -127,24 +151,10 @@ function nextEmployee() {
             } else if (chooseEmployee === 'Intern') {
                 addIntern();
             } else {
-                const pageHTML = generatePage({ managerArr, engineerArr, internArr });
-
-                fs.writeFile('./dist/index.html', pageHTML, err => {
-                    if (err) throw err;
-                
-                    console.log('Page created!');
-                });
-
-                return;
+                generatePageHTML();
             }
         })
 };
-
-// fs.writeFile('./dist/index.html', generatePage(), err => {
-//     if (err) throw err;
-
-//     console.log('Page created!');
-// });
 
 initializeApp()
 

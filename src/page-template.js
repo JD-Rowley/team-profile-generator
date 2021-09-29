@@ -86,7 +86,7 @@ module.exports = templateData => {
         <h1>My Team</h1>
     </header>
     <div class="container d-flex justify-content-around mt-5">
-        <div class="row">
+        <div class="row justify-content-center">
         ${generateManagerCard(managerArr)}
         ${generateEngineerCard(engineerArr)}
         ${generateInternCard(internArr)}
