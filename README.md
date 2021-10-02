@@ -25,3 +25,7 @@
   ## Questions
   * GitHub: [jd-rowley](http://github.com/jd-rowley)
   * E-mail: jdrowley1989@gmail.com
+
+
+## Click on the image to view a video on how this page was generated!
+[![Sample Page Layout](/assets/img/page-screenshot.JPG)](https://watch.screencastify.com/v/SPyeiX92BiNeFgHw3j02)
