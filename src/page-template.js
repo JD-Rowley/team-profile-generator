@@ -79,7 +79,7 @@ module.exports = templateData => {
     <title>Team Profile Generator</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/b70f2c5114.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../src/styles.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
 <body>
     <header class="d-flex justify-content-center text-white bg-danger p-5">

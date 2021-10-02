@@ -1,4 +1,3 @@
-const { writeFile, copyFile } = require('./utils/generatePage.js');
 const fs = require('fs');
 const inquirer = require('inquirer');
 const Manager = require('./lib/Manager');
