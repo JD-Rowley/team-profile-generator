@@ -1,6 +1,8 @@
 const Employee = require("../lib/Employee");
 
+// take information from manager array to generate card for page
 const generateManagerCard = managerArr => {
+    // deconstruct array objects and place the data in card
     return managerArr.map(({ name, id, email, officeNumber }) => {
     return `
     <div class="col-3 card card-entirety m-5">
@@ -22,7 +24,9 @@ const generateManagerCard = managerArr => {
     }).join('');
 };
 
+// use data from engineer array to generate card
 const generateEngineerCard = engineerArr => {
+    // deconstruct engineer object and use data for card
     return engineerArr.map(({ name, id, email, github }) => {
     return `
     <div class="col-3 card card-entirety m-5">
@@ -44,7 +48,9 @@ const generateEngineerCard = engineerArr => {
     }).join('');
 };
 
+// use data from intern array to generate card
 const generateInternCard = internArr => {
+    // deconstruct the intern array and use data to populate card
     return internArr.map(({ name, id, email, school }) => {
     return `
     <div class="col-3 card card-entirety m-5">
@@ -66,6 +72,7 @@ const generateInternCard = internArr => {
     }).join('');
 };
 
+// export page with the above functions to be used elsewhere
 module.exports = templateData => {
     const { managerArr, engineerArr, internArr } = templateData;
 
